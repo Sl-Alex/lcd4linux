@@ -290,8 +290,7 @@
    slash. */
 #undef LSTAT_FOLLOWS_SLASHED_SYMLINK
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
 /* Set to reflect version of ncurses */
@@ -623,6 +622,9 @@
 
 /* SimpleLCD driver */
 #undef WITH_SIMPLELCD
+
+/* SlAlexUSBLCD driver */
+#undef WITH_SLALEXUSBLCD
 
 /* st2205 driver */
 #undef WITH_ST2205

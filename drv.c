@@ -91,6 +91,7 @@ extern DRIVER drv_st2205;
 extern DRIVER drv_serdisplib;
 extern DRIVER drv_ShuttleVFD;
 extern DRIVER drv_SimpleLCD;
+extern DRIVER drv_SlAlexUSBLCD;
 extern DRIVER drv_T6963;
 extern DRIVER drv_TeakLCM;
 extern DRIVER drv_Trefon;
@@ -241,6 +242,9 @@ DRIVER *Driver[] = {
 #endif
 #ifdef WITH_SIMPLELCD
     &drv_SimpleLCD,
+#endif
+#ifdef WITH_SLALEXUSBLCD
+    &drv_SlAlexUSBLCD,
 #endif
 #ifdef WITH_T6963
     &drv_T6963,

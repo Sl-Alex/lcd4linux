@@ -38,7 +38,7 @@ AC_ARG_WITH(
   [                        LW_ABP, M50530, MatrixOrbital, MatrixOrbitalGX, MilfordInstruments, MDM166A,]
   [                        Newhaven, Noritake, NULL, Pertelian, PHAnderson,]
   [                        PICGraphic, picoLCD, picoLCDGraphic, PNG, PPM, RouterBoard,]
-  [                        Sample, SamsungSPF, serdisplib, ShuttleVFD, SimpleLCD, st2205, T6963,]
+  [                        Sample, SamsungSPF, serdisplib, ShuttleVFD, SimpleLCD, SlAlexUSBLCD, st2205, T6963,]
   [                        TeakLCM, Trefon, ULA200, USBHUB, USBLCD, VNC, WincorNixdorf, X11],
   drivers=$withval,
   drivers=all
@@ -106,6 +106,7 @@ for driver in $drivers; do
 	 SERDISPLIB="yes"
 	 SHUTTLEVFD="yes"
          SIMPLELCD="yes"
+         SLALEXUSBLCD="yes"
          T6963="yes"
          TeakLCM="yes"
          Trefon="yes"
@@ -250,6 +251,9 @@ for driver in $drivers; do
 	 ;;          
       SimpleLCD)
          SIMPLELCD=$val
+         ;;
+      SlAlexUsbLcd)
+         SLALEXUSBLCD=$val
          ;;
       st2205)
          ST2205=$val
@@ -764,6 +768,18 @@ if test "$SIMPLELCD" = "yes"; then
    SERIAL="yes"
    DRIVERS="$DRIVERS drv_SimpleLCD.o"
    AC_DEFINE(WITH_SIMPLELCD,1,[SimpleLCD driver])
+fi
+
+if test "$SLALEXUSBLCD" = "yes"; then
+    if test "$has_usb" = "true"; then
+        GRAPHIC="yes"
+        SERIAL="yes"
+        LIBUSB="yes"
+        DRIVERS="$DRIVERS drv_SlAlexUSBLCD.o"
+        AC_DEFINE(WITH_SLALEXUSBLCD,1,[SlAlexUSBLCD driver])
+    else
+        AC_MSG_WARN(usb.h not found: SlAlexUSBLCD driver disabled)
+    fi
 fi
 
 if test "$ST2205" = "yes"; then
